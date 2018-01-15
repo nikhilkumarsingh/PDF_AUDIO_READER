@@ -38,6 +38,21 @@ The task can be simply divided into 2 steps:
   
 - [ ] Create a Python package for this project.
 
+- [ ] A simple desktop GUI.
+
+
+## Want to contribute?
+
+- Fork the repo on GitHub
+
+- Clone the project to your own machine
+
+- Commit changes to your own branch
+
+- Push your work back up to your fork on Github
+
+- Submit a Pull request!
+ 
  
 ## Video link: 
 [<img src=https://i.ytimg.com/vi/J-o99pzbBJk/sddefault.jpg height=400 width=350>](https://www.youtube.com/watch?v=J-o99pzbBJk)
