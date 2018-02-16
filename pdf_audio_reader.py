@@ -1,46 +1,11 @@
-#! /usr/bin/python
-
-import os
-import argparse
 import PyPDF2
 import pyttsx3
 
 
-# error messages
-INVALID_FILETYPE_MSG = "Error: Invalid file format. %s must be a .pdf file."
-INVALID_PATH_MSG = "Error: Invalid file path/name. Path %s does not exist."
-
-
-def validate_file(file_name):
-    '''
-    validate file name and path.
-    '''
-    if not valid_path(file_name):
-        print INVALID_PATH_MSG % (file_name)
-        quit()
-    elif not valid_filetype(file_name):
-        print(INVALID_FILETYPE_MSG % (file_name))
-        quit()
-    return
-
-
-def valid_filetype(file_name):
-    # validate file type
-    return file_name.endswith('.pdf')
-
-
-def valid_path(path):
-    # validate file path
-    return os.path.exists(path)
-
-
-def extract_text(args):
+def extract_text(filename):
 	"""
-	function to extract text from pdf at given filename 
-	and that filename can be used by args.speak[0]
+	function to extract text from pdf at given filename
 	"""
-	filename = args.speak[0]
-	validate_file(filename)
 	pdfFileObj = open(filename, "rb")
 	pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 
@@ -66,20 +31,6 @@ def speak_text(text):
 	engine.runAndWait()
 
 
-def main():
-
-	parser = argparse.ArgumentParser(description = "  PDF Orateur - A PDF Audio Reader!  \
-																									Authors - Nikhil Kumar and Prashant Jain")
-	parser.add_argument("-s", "--speak", type = str, nargs = 1,
-                        metavar = "file_name", default = None,
-                        help = "Opens and reads the specified pdf file in human voice.")
-
-	args = parser.parse_args()
-
-	if args.speak is not None:
-		text = extract_text(args)
-		speak_text(text)
-
-
 if __name__ == "__main__":
-	main()
+	text = extract_text("quotes.pdf")
+	speak_text(text)
