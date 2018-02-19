@@ -72,7 +72,7 @@ def main():
 
 	parser = argparse.ArgumentParser(description = "  \"PDF Orateur\" - A PDF Audio Reader! \n \
 										    \"Authors\" - Nikhil Kumar and Prashant Jain ")
-	parser.add_argument("-s", "--speak", type = str, nargs = 1,
+	parser.add_argument("speak", type = str, nargs = 1,
                         metavar = "file_name", default = None,
                         help = "Opens and reads the specified pdf file in human voice.")
 
