@@ -31,10 +31,6 @@ The task can be simply divided into 2 steps:
   
 ## TODOs
 - [ ] Suggest a cool name for this project.
-
-- [ ] Create a requirements.txt file.
-
-- [ ] A CLI for the PDF audio reader program.
   
 - [ ] Create a Python package for this project.
 
