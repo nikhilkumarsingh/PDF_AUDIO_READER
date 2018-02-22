@@ -9,8 +9,9 @@ import pyttsx3
 
 # error messages
 INVALID_FILETYPE_MSG = "Error: Invalid file format. %s must be a .pdf file. \
-						Make sure to add .pdf in the end of file."
+						Make sure to add .pdf in the end of file. "
 INVALID_PATH_MSG = "Error: Invalid file path/name. Path %s does not exist."
+INVALID_VOICE_INPUT = "Error: %s is wrong input for voice. Enter 'm' or 'f' for voice."
 
 
 def validate_file(file_name):
@@ -36,6 +37,15 @@ def valid_path(path):
     return os.path.exists(path)
 
 
+def valid_voice(voice):
+	#validate correct input for male or female voice
+	voices = ['m', 'f']
+
+	if voice not in voices:
+		print(INVALID_VOICE_INPUT % (voice))
+		quit()
+
+
 def extract_text(args):
 	"""
 	function to extract text from pdf at given filename 
@@ -57,30 +67,52 @@ def extract_text(args):
 	return mytext
 
 
-def speak_text(text):
+def speak_text(text, rate, voice):
 	"""
 	function to invoke TTS engine to speak the pdf text
 	"""
 	engine = pyttsx3.init()
-	engine.setProperty('rate', 150)
-	engine.setProperty('voice', 'en+m7')
+	all_voices = engine.getProperty('voices')		#getting available voices by system-engine
+	maleVoice = all_voices[0].id
+	femaleVoice = all_voices[1].id
+	voice = maleVoice if voice == 'm' else femaleVoice
+	engine.setProperty('rate', rate)
+	engine.setProperty('voice', voice)
 	engine.say(text)
 	engine.runAndWait()
 
 
 def main():
 
-	parser = argparse.ArgumentParser(description = "  \"PDF Orateur\" - A PDF Audio Reader! \n \
+	parser = argparse.ArgumentParser(description="  \"PDF Orateur\" - A PDF Audio Reader! \n \
 										    \"Authors\" - Nikhil Kumar and Prashant Jain ")
-	parser.add_argument("speak", type = str, nargs = 1,
-                        metavar = "file_name", default = None,
-                        help = "Opens and reads the specified pdf file in human voice.")
+	parser.add_argument("speak", type=str, nargs=1,
+                     metavar="file_name", default=None,
+                     help="Opens and reads the specified pdf file in human voice.")
+	parser.add_argument("-r", "--rate", type=int, nargs=1,
+                     metavar="rate_of_speech", default=None,
+                     help="Select the rate of speech, default is 150.")
+	parser.add_argument("-v", "--voice", type=str, nargs=1,
+                     metavar="voice", default=None,
+                     help="Select male or female voice. Enter 'm' for male voice or 'f' for \
+					 female voice preceded by -v. Default voice in male")
 
-	args = parser.parse_args()
+	args = parser.parse_args()			#parsing all arguments in args var
+
+	if args.rate is not None:
+		rate = args.rate[0]
+	else:
+		rate = 150						#default rate of speech
+
+	if args.voice is not None:
+		voice = args.voice[0]
+		valid_voice(voice)
+	else:
+		voice = 'm'					#default voice of speech -male
 
 	if args.speak is not None:
 		text = extract_text(args)
-		speak_text(text)
+		speak_text(text, rate, voice)	#passing all three arguments
 
 
 if __name__ == "__main__":
