@@ -1,4 +1,4 @@
-# PDF AUDIO READER
+# PDF ORATEUR
 
 A **simple** and **offline** PDF audio reader using Python.
 
@@ -11,8 +11,9 @@ The task can be simply divided into 2 steps:
 
 2. Convert text to speech. Refer [speak.py](https://github.com/nikhilkumarsingh/PDF_AUDIO_READER/blob/master/speak.py) for a sample.
 
-[pdf_audio_reader.py](https://github.com/nikhilkumarsingh/PDF_AUDIO_READER/blob/master/pdf_audio_reader.py) contains the complete code.
-
+[pdf_audio_reader.py](https://github.com/nikhilkumarsingh/PDF_AUDIO_READER/blob/master/pdf_audio_reader.py) contains the complete code for python script.    
+[pdf_audio_CLI.py](https://github.com/saberprashant/PDF_AUDIO_READER/blob/prashant/pdf_audio_CLI.py) contains the whole code for the Command Line Interface(CLI) of this project.   
+[pdf_audio_GUI.py](https://github.com/saberprashant/PDF_AUDIO_READER/blob/prashant/pdf_audio_GUI.py) contains the whole code for the GUI version of this project.
 
 ## Dependencies
 
@@ -30,11 +31,7 @@ The task can be simply divided into 2 steps:
   
   
 ## TODOs
-- [ ] Suggest a cool name for this project.
-  
 - [ ] Create a Python package for this project.
-
-- [ ] A simple desktop GUI.
 
 
 ## Want to contribute?
