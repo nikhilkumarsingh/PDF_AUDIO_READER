@@ -1,14 +1,20 @@
 #dependencies
-from Tkinter import *
-import tkFileDialog
+# for python 3
+from tkinter import *
+from tkinter import filedialog
 import PyPDF2
 import pyttsx3
 
+# for python 2 uncomment the following and comment the above one
+# from Tkinter import *
+# import tkFileDialog    #change tkFileDialog in line 17
+# import PyPDF2
+# import pyttsx3
 
 
 def extract_text():
   '''To extract text from chosen PDF file'''
-  file = tkFileDialog.askopenfile(parent=root, mode='rb', title='Choose a PDF file')
+  file = filedialog.askopenfile(parent=root, mode='rb', title='Choose a PDF file')
   if file != None:
     pdfReader = PyPDF2.PdfFileReader(file)
     global mytext
