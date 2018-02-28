@@ -19,11 +19,11 @@ def validate_file(file_name):
     validate file name(with .pdf) and path.
     '''
     if not valid_filetype(file_name):
-    	print(INVALID_FILETYPE_MSG % (file_name))
-        quit()
+			print(INVALID_FILETYPE_MSG % (file_name))
+			quit()
     elif not valid_path(file_name):
-        print(INVALID_PATH_MSG % (file_name))
-        quit()
+			print(INVALID_PATH_MSG % (file_name))
+			quit()
     return
 
 
