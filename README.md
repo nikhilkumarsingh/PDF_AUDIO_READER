@@ -28,7 +28,9 @@ The task can be simply divided into 2 steps:
   ```
   pip install pyttsx3
   ```
-  
+  ```
+  pip install pyaudio and pywin32 (if not working)
+  ```
   
 ## TODOs
 - [ ] Create a Python package for this project.
